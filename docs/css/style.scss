@@ -761,3 +761,52 @@ a:focus {
 }
 
 // end footer section
+#cards {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1000px;
+  padding: 1em 0em;
+  place-self: center;
+  position: relative;
+  width: calc(100% - 2em);
+  z-index: 2;
+}
+
+.card {
+  background-color: transparent;
+  border: var(--bg-color) solid;
+  border-radius: 1em;
+  cursor: pointer;
+  height: 240px;
+  position: relative;
+}
+
+.card:hover:before {
+  opacity: 1;
+}
+
+.card:before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--bg-color) 0%,
+    transparent 100%
+  );
+  border-radius: 0.75em;
+  content: "";
+  inset: 0px;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 400ms;
+  z-index: 0;
+}
+
+.card-content {
+  background-color: var(--card-color);
+  border-radius: inherit;
+  display: grid;
+  inset: 1px;
+  padding: 1em;
+  position: absolute;
+}
