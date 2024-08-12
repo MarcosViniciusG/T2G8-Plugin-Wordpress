@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-body {
-  font-family: "Poppins", sans-serif;
-  color: #0c0c0c;
-  background-color: #ffffff;
-  overflow-x: hidden;
-}
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            min-height: 100vh;
+            background-image: linear-gradient(#111, #050505);
+        }
+
 
 .layout_padding {
   padding: 90px 0;
@@ -1815,4 +1819,166 @@ a:focus {
 
 .card-content {
   padding: 10px;
+}
+.carousel-item img {
+  margin: auto;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: transparent;
+  background-image: none; 
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border: solid rgb(255, 255, 255);
+  border-width: 0 4px 4px 0;
+  padding: 4px;
+}
+.carousel-control-prev-icon {
+  transform: rotate(135deg);
+}
+.carousel-control-next-icon {
+  transform: rotate(-45deg);
+}
+body {
+  background: #e4ebf4;
+  padding: 2rem;
+}
+h1 {
+  font-family: sans-serif;
+}
+.olcards,
+.olcards * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.olcards {
+  list-style: none;
+  counter-reset: cardCount;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  --cardsGap: 1rem;
+  gap: var(--cardsGap);
+  padding-bottom: var(--cardsGap);
+}
+.olcards li {
+  counter-increment: cardCount;
+  display: flex;
+  color: white;
+  --labelOffset: 1rem;
+  --arrowClipSize: 1.5rem;
+  margin-top: var(--labelOffset);
+}
+
+.olcards li::before {
+  content: counter(cardCount, decimal-leading-zero);
+  background: white;
+  color: var(--cardColor);
+  font-size: 2em;
+  font-weight: 700;
+  transform: translateY(calc(-1 * var(--labelOffset)));
+  margin-right: calc(-1 * var(--labelOffset));
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 0.5em;
+}
+
+.olcards li .content {
+  background-color: var(--cardColor);
+  --inlinePadding: 1em;
+  --boxPadding: 0.5em;
+  display: grid;
+  padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize))
+    var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
+  grid-template-areas:
+    "icon title"
+    "icon text";
+  gap: 0.25em 1em;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--arrowClipSize)) 0,
+    100% 50%,
+    calc(100% - var(--arrowClipSize)) 100%,
+    calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
+    0 calc(100% + var(--cardsGap))
+  );
+  position: relative;
+}
+.olcards li .content::before {
+  content: "";
+  position: absolute;
+  width: var(--labelOffset);
+  height: var(--labelOffset);
+  background: var(--cardColor);
+  left: 0;
+  bottom: 0;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  filter: brightness(0.75);
+}
+.olcards li .content::after {
+  content: "";
+  position: absolute;
+  height: var(--cardsGap);
+  width: var(--cardsGap);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
+  left: 0;
+  top: 100%;
+}
+.olcards li .icon {
+  grid-area: icon;
+  align-self: center;
+  font-size: 2em;
+}
+.olcards li .content .title {
+  grid-area: title;
+  font-size: 1.25em;
+  /* font-weight: 700; */
+}
+.olcards li .content .text {
+  grid-area: text;
+}
+.text-left {
+  text-align: left;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content .icon {
+  margin-bottom: 1px;
+}
+.content .title {
+  margin-bottom: 1px;
+  font-weight: bold;
+}
+.content .text {
+  margin-bottom: 2px;
+  text-align: center;
+}
+.content .image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.content .image img {
+  max-width: 100%;
+  height: auto;
 }
